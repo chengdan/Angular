@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body ng-app="myApp" ng-controller="DemoCtrl">
+  <h1 ng-bind="name"></h1>
+  
+  <script src="./angular.js"></script>
+  <script>
+    // 注入式 创建控制器
+    angular
+      .module('myApp', [])
+
+      // 将 推断式 中的回调函数, 修改为 数组类型的参数
+      // 最后一个参数: 表示回调函数
+      // 其他所有的参数, 都表示要注入到控制器中的服务( 比如: $scope 就是一个服务 )
+      .controller('DemoCtrl', ['$scope', function ($scope) {
+        console.log('控制器中的代码执行了');
+
+        $scope.name = 'jack'
+      }])
+
+    // 压缩后的代码, 照样能够正常运行
+    /* angular.module("myApp", []).controller("DemoCtrl", ["$scope", function (a) { console.log("控制器中的代码执行了") }]); */
+  </script>
+</body>
+</html>

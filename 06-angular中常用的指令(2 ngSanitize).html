@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    [ng-cloak] {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div ng-app="myApp" ng-controller="DemoCtrl">
+    <!-- 4 在 HTML 中通过　ng-bind-html 指令展示 html 内容 -->
+    <div ng-bind-html="html"></div>
+  </div>
+  
+  <!-- 1 引入 angularjs -->
+  <script src="./angular.js"></script>
+  <!-- 2 引入 ngSanitize 模块 -->
+  <script src="./angular-sanitize.js"></script>
+  <script>
+    // 3 创建带有依赖项的模块
+    angular
+      .module('myApp', ['ngSanitize'])
+      .controller('DemoCtrl', function ($scope) {
+        $scope.html = '<h1>上海的冬天有蚊子</h1>'
+      })
+  </script>
+</body>
+
+</html>

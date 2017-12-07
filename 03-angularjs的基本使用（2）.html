@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div ng-app="myApp">
+    <div ng-controller="DemoCtrl">
+      <input type="text" ng-model="name">
+      <h1>{{ name }}</h1>
+
+      <!-- 绑定单击事件 -->
+      <!-- 注意：绑定的方法，必须要调用才起作用！！！ -->
+      <button ng-click="sayHello()">问好</button>
+    </div>
+
+    <div ng-controller="DemoCtrl-2">
+      <h2>{{ name }}</h2>
+    </div>
+  </div>
+  
+  <script src="./angular.js"></script>
+  <script>
+    // angularjs 是模块化开发
+    // 使用 angularjs 的第一步：创建模块
+    // angularjs中所有的内容，都是挂载到某一个模块中的
+
+    // 创建模块
+    // 第一个参数：表示模块名称，需要配合 ng-app 指令来使用，也就是说明使用哪个模块管理应用
+    // 第二个参数：表示当前模块的依赖项列表，如果当前模块依赖于其他模块，需要将依赖模块的名称放到数据中
+    var app = angular.module('myApp', [])
+
+    // 创建控制器
+    app.controller('DemoCtrl', function ($scope) {
+      $scope.name = 'jack'
+
+      $scope.sayHello = function () {
+        console.log('方法调用了');
+      }
+    })
+
+    // 注意：一个模块中可以有多个控制器，但是，一般只使用一个就够了
+    // 创建第二个控制器
+    app.controller('DemoCtrl-2', function ($scope) {
+      $scope.name = 'rose'
+    })
+  </script>
+</body>
+</html>

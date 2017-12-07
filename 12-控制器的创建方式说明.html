@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body ng-app="myApp" ng-controller="DemoCtrl">
+  
+  <script src="./angular.js"></script>
+  <script>
+    // 创建的模块以及控制器中的代码, 只有在通过 ng-app/ng-controller 指令使用的时候
+    // 对应的代码才会执行.
+    // angular项目中如果有多个模块, 多个模块之间有依赖关系, 但是, 我们不用考虑加载模块顺序的问题
+
+    // 注意: 控制器中的形参 $scope 是固定的写法, 名称不能变
+
+    angular
+      .module('myApp', [])
+      .controller('DemoCtrl', function ($scope) {
+        console.log('控制器中的代码执行了');
+      })
+    
+    // 这种方式创建控制器的问题: 无法进行代码压缩
+    // angular.module("myApp", []).controller("DemoCtrl", function (a) { console.log("控制器中的代码执行了") });
+  </script>
+</body>
+</html>

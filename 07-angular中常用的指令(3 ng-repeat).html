@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .red {
+      background-color: red;
+    }
+
+    .green {
+      background-color: green;
+    }
+  </style>
+</head>
+
+<body ng-app="myApp">
+  <div ng-controller="DemoController">
+    <!-- 在 angularjs 中通过 ng-repeat 指令来遍历数组 -->
+    <!-- 注意：参数顺序，先 索引号 再 当前项 -->
+    <!-- <p ng-repeat="(index, item) in list">{{ item }} -- {{ index }}</p> -->
+    <!-- <p ng-repeat="item in list">{{ item }}</p> -->
+
+    <!-- $index 表示当前项的索引号 -->
+    <!-- <p ng-repeat="item in list">{{ item }} --- {{ $index }}</p> -->
+    
+    <!-- <p ng-repeat="item in list">{{ item }} --- {{ $odd }}</p> -->
+
+    <!-- 隔行变色 -->
+    <!-- 注意：在 angularjs 中，可以在 html属性中使用 差值表达式 -->
+    <!-- <p ng-repeat="item in list" class="{{ $even ? 'red' : 'green' }}">{{ item }} --- {{ $odd }}</p> -->
+
+    <p ng-repeat="item in list track by $index">{{ item }} --- {{ $odd }}</p>
+  </div>
+
+  <script src="./angular.js"></script>
+  <script>
+    angular
+      .module('myApp', [])
+      .controller('DemoController', ['$scope', function ($scope) {
+        // 在 angularjs 中遍历数组或对象
+        $scope.list = ['吃饭', '睡觉', '打豆豆', '敲代码', '喝粥', '睡觉']
+      }]);
+  </script>
+</body>
+
+</html>

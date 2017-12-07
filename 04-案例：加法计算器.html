@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div ng-app="calcApp" ng-controller="CaclCtrl">
+    <input type="text" ng-model="num1">+
+    <input type="text" ng-model="num2">
+    <button ng-click="add()">=</button>
+    <input type="text" ng-model="result">
+  </div>
+  
+  <script src="./angular.js"></script>
+  <script>
+    // 1 如果想要获取到视图中文本框的值，通过 指令（ng-model） 来获取
+    // 2 思想：操作数据，而不是操作DOM
+    // 3 框架通过 双向数据绑定 已经将视图中用户输入的内容，传递给数据
+
+    angular
+      .module('calcApp', [])
+      .controller('CaclCtrl', function ($scope) {
+        $scope.num1 = ''
+        $scope.num2 = ''
+        $scope.result = ''
+
+        // 计算方法
+        $scope.add = function () {
+          $scope.result = ($scope.num1 - 0) + ($scope.num2 - 0)
+        }
+      })
+  </script>
+</body>
+</html>

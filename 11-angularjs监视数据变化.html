@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body ng-app="myApp" ng-controller="DemoCtrl">
+  <input type="text" ng-model="name">
+  <input type="text" ng-model="user.age">
+  
+  <script src="./angular.js"></script>
+  <script>
+    angular
+      .module('myApp', [])
+      .controller('DemoCtrl', function ($scope) {
+        // 监视 $scope 中数据的变化
+        $scope.name = 'jack'
+        $scope.user = {
+          age: 19
+        }
+
+        // 1 $watch 进入页面会自动执行一次
+        $scope.$watch('name', function (newVal, oldVal) {
+          // 通过比较新值和旧值是否相同, 来屏蔽第一次默认执行
+          if (newVal === oldVal) return
+
+          console.log('当前值为: ', newVal, ', 上一次的值为: ', oldVal);
+        })
+        
+        // 第三个参数: 如果为true, 表示监视对象中属性的变化
+        $scope.$watch('user', function (newVal, oldVal) {
+          if (newVal === oldVal) return
+          
+          console.log('当前值为: ', newVal.age, ', 上一次的值为: ', oldVal.age);
+        }, true)
+      })
+  </script>
+</body>
+</html>

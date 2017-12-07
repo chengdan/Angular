@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .fz {
+      font-size: 40px;
+      color: red;
+    }
+
+    .cls {
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body ng-app="myApp">
+  <div ng-controller="DemoController">
+    <!-- ng-class 指令：用来给当前元素添加类 -->
+    <!-- ng-class 的值是一个js对象，对象的键表示要添加的类名，值是一个布尔值，如果为true表示添加类，否则，不添加类 -->
+    <h1 ng-class="{ fz: true, cls: true }">冬天还有蚊子？？？</h1>
+  </div>
+
+  <script src="./angular.js"></script>
+  <script>
+    angular
+      .module('myApp', [])
+      .controller('DemoController', ['$scope', function ($scope) {
+        
+      }]);
+  </script>
+</body>
+
+</html>

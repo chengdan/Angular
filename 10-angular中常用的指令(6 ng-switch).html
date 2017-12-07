@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body ng-app="myApp">
+  <div ng-controller="DemoController">
+    <input type="text" ng-model="name">
+    <div ng-switch="name">
+      <div ng-switch-when="jack">我是jack</div>
+      <div ng-switch-when="tom">我是tom</div>
+      <div ng-switch-when="rose">我是rose</div>
+    </div>
+  </div>
+
+  <script src="./angular.js"></script>
+  <script>
+    angular
+      .module('myApp', [])
+      .controller('DemoController', ['$scope', function ($scope) {
+        $scope.name = "jack"        
+      }]);
+  </script>
+</body>
+
+</html>

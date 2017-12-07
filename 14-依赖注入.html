@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body ng-app="myApp">
+  <div ng-controller="DemoController">
+    <h1>{{name}}</h1>
+  </div>
+
+  <script src="./angular.js"></script>
+  <script>
+    // 依赖注入( DI -Dependency injection )
+    // 作用: 简化参数处理
+    // angularjs 中, 通过约定函数参数的名称来决定注入什么样的服务(传入什么样的参数)
+    // 我们可以自己创建一个服务, 创建好的服务, 跟内置的服务一样, 也可以注入到控制器中使用
+
+    /* function fn (name, age, gender, score, stuNo) {
+    }
+    fn('', '', '', 99) */
+
+    angular
+        .module('myApp', [])
+        .controller('DemoController', ['$log', '$timeout', '$scope', function ($log, $timeout, $scope) {
+          $scope.name = 'jack'
+
+          $timeout(function () {
+            $scope.name = 'rose'
+          }, 2000)
+
+          $log.warn('警告: 上海冬天有蚊子')
+        }]);
+
+    /* angular
+      .module('myApp', [])
+      .controller('DemoController', ['$scope', '$injector', function ($scope, $injector) {
+        
+        // annotate 获取回调函数的参数列表
+        // ret => ['jack', 'rose']
+        // var ret = $injector.annotate(function ($scope, $window, $timeout) { })
+        // console.log(ret)
+
+        // 注入服务，并调用
+        // $injector.invoke(function (myService) {
+        //   console.log(myService)
+        // })
+
+      }]); */
+  </script>
+</body>
+
+</html>

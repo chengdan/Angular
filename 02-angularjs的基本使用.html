@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div ng-app="myApp">
+    <div ng-controller="DemoCtrl">
+      <input type="text" ng-model="name">
+      <h1>{{ name }}</h1>
+
+      <!-- 绑定单击事件 -->
+      <!-- 注意：绑定的方法，必须要调用才起作用！！！ -->
+      <button ng-click="sayHello()">问好</button>
+    </div>
+  </div>
+  
+  <script src="./angular.js"></script>
+  <script>
+    // angularjs 是模块化开发
+    // 使用 angularjs 的第一步：创建模块
+    // angularjs中所有的内容，都是挂载到某一个模块中的
+
+    // 创建模块
+    // 第一个参数：表示模块名称，需要配合 ng-app 指令来使用，也就是说明使用哪个模块管理应用
+    // 第二个参数：表示当前模块的依赖项列表，如果当前模块依赖于其他模块，需要将依赖模块的名称放到数据中
+    var app = angular.module('myApp', [])
+
+    // 创建控制器
+    // 第一个参数：表示控制器的名字，需要配合 ng-controller 指令来使用
+    // 第二个参数：表示控制器的逻辑代码，比如 $scope 需要在控制器中使用
+    app.controller('DemoCtrl', function ($scope) {
+      // $scope 注意点：
+      // 1 $scope 名称是固定的，如果写错了就会报错
+      // 2 $scope 类似于 vue 中的 data 配置项，用来为View提供数据或方法的
+      $scope.name = 'jack'
+
+      $scope.sayHello = function () {
+        console.log('方法调用了');
+      }
+    })
+  </script>
+</body>
+</html>

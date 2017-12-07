@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <!-- 
+    ng-app 指令的作用：
+    1 启动 angularjs 应用
+    2 指定了 angularjs 管理的边界，只有在ng-app内部的内容才会收到angularjs的管理
+  -->
+  <div ng-app>
+    <!-- ng-model 指令：实现了数据双向绑定 -->
+    <input type="text" ng-model="name">
+    <!-- mustache {{}} 小胡子语法 -->
+    <!-- 插值表达式 作用：展示数据 -->
+    <h1>{{ name }}</h1>
+  </div>
+
+  <!-- 
+    与 vue 的不同之处：
+    vue 要求在 视图中使用的数据（比如：name），必须要在 data 中显示指定，否则，会报错
+    但是，在angularjs中，数据可以不显示执行，angularjs发现数据没有指定会自动创建该数据
+
+    最佳实践：先显示的指定数据，再使用数据
+  -->
+  <!-- {{ name }} -->
+  
+  <!-- 1 引入 angularjs -->
+  <script src="./angular.js"></script>
+</body>
+</html>
